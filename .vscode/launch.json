@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "name": "Spring Boot (backend - Maven Wrapper)",
+      "request": "launch",
+      "command": ".\\mvnw.cmd spring-boot:run",
+      "cwd": "${workspaceFolder}\\backend"
+    },
+    {
+      "type": "node",
+      "name": "Vite: 用户端 (frontend-user)",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/frontend-user",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "name": "Vite: 管理后台 (frontend-admin)",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/frontend-admin",
+      "console": "integratedTerminal"
+    }
+  ]
+}

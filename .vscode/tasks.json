@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "MySQL: 建库+导入数据",
+      "type": "shell",
+      "command": "mysql -u root -p < ${workspaceFolder}/backend/src/main/resources/sql/schema.sql && mysql -u root -p < ${workspaceFolder}/backend/src/main/resources/sql/data.sql",
+      "windows": {
+        "command": "Get-Content ${workspaceFolder}\\backend\\src\\main\\resources\\sql\\schema.sql | mysql -u root -p; Get-Content ${workspaceFolder}\\backend\\src\\main\\resources\\sql\\data.sql | mysql -u root -p"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "后端: Maven Wrapper 启动",
+      "type": "shell",
+      "command": "./mvnw spring-boot:run",
+      "windows": {
+        "command": ".\\mvnw.cmd spring-boot:run"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "后端: Maven Wrapper 打包 (跳过测试)",
+      "type": "shell",
+      "command": "./mvnw package -DskipTests",
+      "windows": {
+        "command": ".\\mvnw.cmd package -DskipTests"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "前端用户端: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-user"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "前端管理后台: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-admin"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "前端用户端: build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-user"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "前端管理后台: build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-admin"
+      },
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+package com.jd.ecommerce.entity;
+
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Data
+public class Category {
+    private Long id;
+    private String name;
+    private Long parentId;
+    private Integer sort;
+    private String icon;
+    private Integer status;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+}
