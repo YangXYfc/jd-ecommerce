@@ -78,4 +78,11 @@ public class ReviewService {
         }
         reviewMapper.updateMerchantReply(reviewId, reply, LocalDateTime.now());
     }
+
+    /**
+     * 查询某商家所有商品的评价列表
+     */
+    public List<Review> findByMerchant(Long merchantId, Long productId, Integer rating) {
+        return reviewMapper.findByMerchant(merchantId, productId, rating);
+    }
 }

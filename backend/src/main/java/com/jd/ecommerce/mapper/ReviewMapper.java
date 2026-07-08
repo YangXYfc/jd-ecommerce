@@ -23,4 +23,14 @@ public interface ReviewMapper {
 
     @Update("UPDATE review SET merchant_reply = #{reply}, merchant_reply_time = #{replyTime} WHERE id = #{id}")
     int updateMerchantReply(@Param("id") Long id, @Param("reply") String reply, @Param("replyTime") java.time.LocalDateTime replyTime);
+
+    /**
+     * 查询某商家所有商品的评价（通过 product → merchant 关联）
+     */
+    @Select("<script>SELECT r.* FROM review r INNER JOIN product p ON r.product_id = p.id" +
+            " WHERE p.merchant_id = #{merchantId}" +
+            "<if test='productId != null'> AND r.product_id = #{productId}</if>" +
+            "<if test='rating != null'> AND r.rating = #{rating}</if>" +
+            " ORDER BY r.created_at DESC</script>")
+    List<Review> findByMerchant(@Param("merchantId") Long merchantId, @Param("productId") Long productId, @Param("rating") Integer rating);
 }

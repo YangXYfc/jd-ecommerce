@@ -59,6 +59,16 @@
       "problemMatcher": []
     },
     {
+      "label": "前端商家后台: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-merchant"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
       "label": "前端用户端: build",
       "type": "shell",
       "command": "npm run build",
@@ -76,6 +86,34 @@
         "cwd": "${workspaceFolder}/frontend-admin"
       },
       "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "前端商家后台: build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend-merchant"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "一键安装全部前端依赖",
+      "dependsOn": [
+        "前端用户端: npm install",
+        "前端管理后台: npm install",
+        "前端商家后台: npm install"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "一键构建全部前端",
+      "dependsOn": [
+        "前端用户端: build",
+        "前端管理后台: build",
+        "前端商家后台: build"
+      ],
       "problemMatcher": []
     }
   ]

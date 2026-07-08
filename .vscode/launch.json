@@ -13,7 +13,10 @@
       "name": "Vite: 用户端 (frontend-user)",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "cwd": "${workspaceFolder}/frontend-user",
       "console": "integratedTerminal"
     },
@@ -22,9 +25,53 @@
       "name": "Vite: 管理后台 (frontend-admin)",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "cwd": "${workspaceFolder}/frontend-admin",
       "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "name": "Vite: 商家后台 (frontend-merchant)",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "cwd": "${workspaceFolder}/frontend-merchant",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-JdEcommerceApplication<jd-ecommerce-backend>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.jd.ecommerce.JdEcommerceApplication",
+      "projectName": "jd-ecommerce-backend",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 一键启动全部 (后端+三端前端)",
+      "configurations": [
+        "Spring Boot (backend - Maven Wrapper)",
+        "Vite: 用户端 (frontend-user)",
+        "Vite: 管理后台 (frontend-admin)",
+        "Vite: 商家后台 (frontend-merchant)"
+      ]
+    },
+    {
+      "name": "🎨 一键启动三端前端",
+      "configurations": [
+        "Vite: 用户端 (frontend-user)",
+        "Vite: 管理后台 (frontend-admin)",
+        "Vite: 商家后台 (frontend-merchant)"
+      ]
     }
   ]
 }

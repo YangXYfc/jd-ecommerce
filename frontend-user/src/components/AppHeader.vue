@@ -9,18 +9,16 @@
         <nav class="top-nav">
           <template v-if="userStore.isLoggedIn">
             <span class="welcome">你好，{{ userStore.nickname }}</span>
-            <router-link to="/profile">我的订单</router-link>
             <router-link to="/profile">个人中心</router-link>
+            <router-link to="/orders">我的订单</router-link>
             <a href="javascript:void(0)" @click="handleLogout">退出</a>
           </template>
           <template v-else>
             <router-link to="/login">你好，请登录</router-link>
             <router-link to="/register" class="register-link">免费注册</router-link>
+            <router-link to="/orders">我的订单</router-link>
+            <router-link to="/cart">购物车</router-link>
           </template>
-          <span class="divider">|</span>
-          <router-link to="/orders">我的订单</router-link>
-          <router-link to="/profile">会员中心</router-link>
-          <router-link to="/cart">购物车</router-link>
         </nav>
       </div>
     </div>
@@ -101,7 +99,6 @@
           <li><router-link to="/">首页</router-link></li>
           <li><router-link to="/product-list">全部商品</router-link></li>
           <li><router-link to="/orders">我的订单</router-link></li>
-          <li><router-link to="/profile">会员中心</router-link></li>
         </ul>
       </div>
     </nav>
@@ -195,10 +192,6 @@ function handleLogout() {
 .register-link {
   color: var(--jd-red) !important;
   font-weight: 600;
-}
-
-.divider {
-  color: var(--border-base);
 }
 
 /* 搜索区 */

@@ -17,7 +17,7 @@ set "ALL_OK=1"
 REM ============================================================
 REM 1. JDK 17+
 REM ============================================================
-echo [1/4] JDK 17+ ...
+echo [1/5] JDK 17+ ...
 where java >nul 2>nul
 if errorlevel 1 (
     echo   [X] JDK not found
@@ -50,7 +50,7 @@ echo.
 REM ============================================================
 REM 2. Maven 3.8+
 REM ============================================================
-echo [2/4] Maven 3.8+ ...
+echo [2/5] Maven 3.8+ ...
 where mvn >nul 2>nul
 if errorlevel 1 (
     echo   [X] Maven not found
@@ -69,7 +69,7 @@ echo.
 REM ============================================================
 REM 3. MySQL 8.0+
 REM ============================================================
-echo [3/4] MySQL 8.0+ ...
+echo [3/5] MySQL 8.0+ ...
 where mysql >nul 2>nul
 if errorlevel 1 (
     echo   [X] MySQL client not found
@@ -85,7 +85,7 @@ echo.
 REM ============================================================
 REM 4. Node.js 18+
 REM ============================================================
-echo [4/4] Node.js 18+ ...
+echo [4/5] Node.js 18+ ...
 where node >nul 2>nul
 if errorlevel 1 (
     echo   [X] Node.js not found
@@ -105,6 +105,46 @@ if errorlevel 1 (
         echo   [X] Node.js version !NVER! too low, need 18+
         set "ALL_OK=0"
     )
+)
+echo.
+
+REM ============================================================
+REM 5. Project directories & node_modules
+REM ============================================================
+echo [5/5] Project directories ...
+if not exist "%~dp0..\backend" (
+    echo   [X] backend directory not found
+    set "ALL_OK=0"
+) else (
+    echo   [OK] backend
+)
+if not exist "%~dp0..\frontend-user" (
+    echo   [X] frontend-user directory not found
+    set "ALL_OK=0"
+) else (
+    echo   [OK] frontend-user
+)
+if not exist "%~dp0..\frontend-admin" (
+    echo   [X] frontend-admin directory not found
+    set "ALL_OK=0"
+) else (
+    echo   [OK] frontend-admin
+)
+if not exist "%~dp0..\frontend-merchant" (
+    echo   [X] frontend-merchant directory not found
+    set "ALL_OK=0"
+) else (
+    echo   [OK] frontend-merchant
+)
+echo   Checking node_modules ...
+if not exist "%~dp0..\frontend-user\node_modules" (
+    echo   [!] frontend-user/node_modules not found - run scripts\setup-env.bat
+)
+if not exist "%~dp0..\frontend-admin\node_modules" (
+    echo   [!] frontend-admin/node_modules not found - run scripts\setup-env.bat
+)
+if not exist "%~dp0..\frontend-merchant\node_modules" (
+    echo   [!] frontend-merchant/node_modules not found - run scripts\setup-env.bat
 )
 echo.
 

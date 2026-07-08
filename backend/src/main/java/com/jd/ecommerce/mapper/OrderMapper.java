@@ -3,6 +3,7 @@ package com.jd.ecommerce.mapper;
 import com.jd.ecommerce.entity.Order;
 import org.apache.ibatis.annotations.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface OrderMapper {
@@ -42,6 +43,15 @@ public interface OrderMapper {
 
     @Select("SELECT COUNT(*) FROM orders WHERE merchant_id = #{merchantId} AND status = #{status}")
     long countByMerchantAndStatus(@Param("merchantId") Long merchantId, @Param("status") Integer status);
+
+    @Select("SELECT COUNT(*) FROM orders WHERE merchant_id = #{merchantId}")
+    long countByMerchant(@Param("merchantId") Long merchantId);
+
+    @Select("SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE merchant_id = #{merchantId} AND status >= 1 AND status <= 4")
+    BigDecimal sumTotalSalesByMerchant(@Param("merchantId") Long merchantId);
+
+    @Select("SELECT COUNT(*) FROM orders WHERE merchant_id = #{merchantId} AND DATE(created_at) = CURDATE()")
+    long countTodayByMerchant(@Param("merchantId") Long merchantId);
 
     @Select("SELECT COALESCE(SUM(total_amount), 0) FROM orders WHERE status >= 1 AND status <= 4")
     java.math.BigDecimal sumTotalSales();

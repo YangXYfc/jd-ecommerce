@@ -18,6 +18,7 @@ C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecomm
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\config\SwaggerConfig.java
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\entity\Cart.java
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\service\ReviewService.java
+C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\dto\MerchantDashboardResponse.java
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\dto\RefundAppealRequest.java
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\dto\LoginRequest.java
 C:\Users\12161\.csgclaw\projects\jd-ecommerce\backend\src\main\java\com\jd\ecommerce\mapper\OrderMapper.java

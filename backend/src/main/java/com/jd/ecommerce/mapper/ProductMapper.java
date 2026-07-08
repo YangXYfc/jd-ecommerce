@@ -51,4 +51,7 @@ public interface ProductMapper {
 
     @Update("UPDATE product SET sales_count = sales_count + #{count} WHERE id = #{id}")
     int incrementSales(@Param("id") Long id, @Param("count") int count);
+
+    @Select("SELECT COUNT(*) FROM product WHERE merchant_id = #{merchantId}")
+    long countByMerchantId(@Param("merchantId") Long merchantId);
 }

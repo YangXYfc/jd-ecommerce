@@ -12,10 +12,13 @@
 - [3. Maven 安装与配置](#3-maven-安装与配置)
 - [4. MySQL 8.0+ 安装与配置](#4-mysql-80-安装与配置)
 - [5. Node.js 18+ 安装](#5-nodejs-18-安装)
-- [6. VS Code 推荐插件](#6-vs-code-推荐插件)
-- [7. 数据库导入](#7-数据库导入)
-- [8. 启动项目](#8-启动项目)
-- [9. 常见问题排查](#9-常见问题排查)
+- [6. VS Code 推荐插件与配置](#6-vs-code-推荐插件与配置)
+- [7. 数据库创建与初始化](#7-数据库创建与初始化)
+- [8. 后端启动](#8-后端启动)
+- [9. 前端三端启动](#9-前端三端启动)
+- [10. 一键启动脚本使用说明](#10-一键启动脚本使用说明)
+- [11. 环境检查脚本使用说明](#11-环境检查脚本使用说明)
+- [12. 常见问题排查](#12-常见问题排查)
 
 ---
 
@@ -24,7 +27,7 @@
 | 组件 | 最低版本 | 用途 |
 |------|----------|------|
 | JDK | 17 | 后端 Spring Boot 编译运行 |
-| Maven | 3.8 | 后端依赖管理与构建 |
+| Maven | 3.8 (或使用项目自带 Maven Wrapper) | 后端依赖管理与构建 |
 | MySQL | 8.0 | 数据库 |
 | Node.js | 18 | 前端构建与开发服务器 |
 | npm | 随 Node.js 安装 | 前端包管理 |
@@ -78,6 +81,8 @@ openjdk version "17.0.x" 2024-xx-xx
 ---
 
 ## 3. Maven 安装与配置
+
+> **提示**：项目自带 Maven Wrapper（`backend\mvnw.cmd`），如果你不想全局安装 Maven，可以跳过本节，直接使用 `mvnw.cmd` 代替 `mvn` 命令。
 
 ### 3.1 下载
 
@@ -207,11 +212,11 @@ npm config set registry https://registry.npmmirror.com
 
 ---
 
-## 6. VS Code 推荐插件
+## 6. VS Code 推荐插件与配置
+
+### 6.1 推荐插件
 
 项目 `.vscode/extensions.json` 已预设推荐插件列表，打开项目时 VS Code 会自动弹出推荐安装提示。
-
-### 推荐插件清单
 
 | 插件 | 插件 ID | 用途 |
 |------|---------|------|
@@ -221,7 +226,7 @@ npm config set registry https://registry.npmmirror.com
 | **MySQL (Weijan Chen)** | `cweijan.vscode-mysql-client2` | MySQL 数据库客户端（在 VS Code 内查询数据库） |
 | **Prettier** | `esbenp.prettier-vscode` | 代码格式化（Vue / JS / CSS） |
 
-### 安装方式
+**安装方式**：
 
 **方式一（推荐）**：用 VS Code 打开项目根目录，会自动弹出推荐插件提示，点击「Install All」。
 
@@ -235,20 +240,28 @@ code --install-extension cweijan.vscode-mysql-client2
 code --install-extension esbenp.prettier-vscode
 ```
 
-### VS Code 项目配置说明
+### 6.2 VS Code 项目配置说明
 
 项目已预设以下 VS Code 配置（`.vscode/` 目录）：
 
 | 文件 | 内容 |
 |------|------|
 | `settings.json` | 编码 UTF-8、保存自动格式化、Java/Vue/JS 格式化器、文件排除规则 |
-| `launch.json` | 三个调试配置：Spring Boot 后端、用户端 Vite、管理后台 Vite |
+| `launch.json` | 调试配置：Spring Boot 后端、用户端 Vite、管理后台 Vite |
 | `tasks.json` | 构建任务：MySQL 导入、后端启动/打包、前端 install/build |
 | `extensions.json` | 推荐插件列表 |
 
+### 6.3 调试与运行
+
+- 按 `F5` 启动调试，可在「运行和调试」面板选择配置：
+  - **Spring Boot (backend)** — 后端调试（支持断点）
+  - **Vite: 用户端 (frontend-user)** — 用户端开发服务器
+  - **Vite: 管理后台 (frontend-admin)** — 管理后台开发服务器
+- 按 `Ctrl+Shift+P` → `Tasks: Run Task` 可执行预设任务（MySQL 导入、Maven 启动/打包、前端 install/build）
+
 ---
 
-## 7. 数据库导入
+## 7. 数据库创建与初始化
 
 ### 方式一：使用一键脚本（推荐）
 
@@ -297,83 +310,178 @@ mysql -u root -p -e "USE jd_ecommerce; SHOW TABLES; SELECT COUNT(*) FROM user;"
 
 ---
 
-## 8. 启动项目
+## 8. 后端启动
 
-### 方式一：一键启动脚本（推荐）
+### 方式一：使用 Maven Wrapper（推荐，无需全局安装 Maven）
 
 ```cmd
-scripts\start-all.bat
+cd backend
+mvnw.cmd spring-boot:run
 ```
 
-脚本会打开三个新的 CMD 窗口，分别启动：
-- 后端 Spring Boot（端口 8080）
-- 用户端 Vite（端口 5173）
-- 管理后台 Vite（端口 5174）
+或使用单独启动脚本：
 
-### 方式二：VS Code 调试模式
+```cmd
+scripts\start-backend.bat
+```
+
+### 方式二：使用全局 Maven
+
+```cmd
+cd backend
+mvn spring-boot:run
+```
+
+### 方式三：VS Code 调试模式
 
 1. 用 VS Code 打开项目根目录
-2. 按 `F5` 或在「运行和调试」面板选择配置：
-   - **Spring Boot (backend)** — 启动后端（带断点调试）
-   - **Vite: 用户端 (frontend-user)** — 启动用户端
-   - **Vite: 管理后台 (frontend-admin)** — 启动管理后台
-3. 可同时启动多个配置（先启动后端，再启动前端）
+2. 按 `F5` 或在「运行和调试」面板选择 **Spring Boot (backend)**
 
-### 方式三：手动启动
+后端启动后：
+- API 地址: http://localhost:8080/api
+- Swagger 文档: http://localhost:8080/api/doc.html
+- OpenAPI JSON: http://localhost:8080/api/v3/api-docs
+
+---
+
+## 9. 前端三端启动
+
+> 项目包含三个前端：用户端 (frontend-user, 端口 5173)、管理后台 (frontend-admin, 端口 5174) 和商家后台 (frontend-merchant, 端口 5175)。
+
+### 方式一：单独启动脚本
+
+```cmd
+REM 用户端 (端口 5173)
+scripts\start-frontend-user.bat
+
+REM 管理后台 (端口 5174)
+scripts\start-frontend-admin.bat
+```
+
+### 方式二：手动启动
 
 打开三个终端窗口，分别执行：
 
 ```cmd
-REM 终端 1 - 后端
-cd backend
-mvn spring-boot:run
-
-REM 终端 2 - 用户端
+REM 终端 1 - 用户端
 cd frontend-user
 npm install
 npm run dev
 
-REM 终端 3 - 管理后台
+REM 终端 2 - 管理后台
 cd frontend-admin
+npm install
+npm run dev
+
+REM 终端 3 - 商家后台
+cd frontend-merchant
 npm install
 npm run dev
 ```
 
-### 方式四：VS Code Tasks 面板
+### 方式三：VS Code 调试模式
 
-按 `Ctrl+Shift+P` → 输入 `Tasks: Run Task`，可看到预设任务：
-- `MySQL: 建库+导入数据`
-- `后端: Maven 启动`
-- `后端: Maven 打包 (跳过测试)`
-- `前端用户端: npm install`
-- `前端管理后台: npm install`
-- `前端用户端: build`
-- `前端管理后台: build`
+按 `F5` 或在「运行和调试」面板选择：
+- **Vite: 用户端 (frontend-user)** — 启动用户端
+- **Vite: 管理后台 (frontend-admin)** — 启动管理后台
+- **Vite: 商家后台 (frontend-merchant)** — 启动商家后台
 
 ### 访问地址
 
 | 服务 | 地址 |
 |------|------|
-| 后端 API | http://localhost:8080/api |
-| Swagger 文档 | http://localhost:8080/api/doc.html |
 | 用户端 | http://localhost:5173 |
 | 管理后台 | http://localhost:5174 |
-
-### 测试账号
-
-| 角色 | 用户名 | 密码 |
-|------|--------|------|
-| 管理员 | admin | 123456 |
-| 商家 | merchant1 | 123456 |
-| 普通用户 | user1 | 123456 |
+| 商家后台 | http://localhost:5175 |
+| 后端 API | http://localhost:8080/api |
+| Swagger 文档 | http://localhost:8080/api/doc.html |
 
 ---
 
-## 9. 常见问题排查
+## 10. 一键启动脚本使用说明
 
-### 9.1 端口被占用
+### scripts\start-all.bat
 
-**现象**：启动后端或前端时报 `Port 8080/5173/5174 is already in use`。
+一键启动后端 + 用户端 + 管理后台 + 商家后台，每个服务在独立的 CMD 窗口中运行。
+
+```cmd
+scripts\start-all.bat
+```
+
+脚本行为：
+1. 在新窗口中启动后端 Spring Boot（端口 8080），等待 5 秒
+2. 在新窗口中启动用户端 Vite（端口 5173），等待 2 秒
+3. 在新窗口中启动管理后台 Vite（端口 5174），等待 2 秒
+4. 在新窗口中启动商家后台 Vite（端口 5175）
+
+> **提示**：脚本使用 Maven Wrapper（`mvnw.cmd`），无需全局安装 Maven。
+
+### scripts\stop-all.bat
+
+一键停止所有服务（后端 + 前端三端），通过端口查找并终止对应进程。
+
+```cmd
+scripts\stop-all.bat
+```
+
+### scripts\setup-env.bat
+
+一键环境配置：检查依赖 → 导入数据库 → 配置后端连接 → 安装前端依赖（用户端 + 管理后台 + 商家后台）。
+
+```cmd
+scripts\setup-env.bat
+```
+
+---
+
+## 11. 环境检查脚本使用说明
+
+### scripts\check-env.bat
+
+检查 JDK / Maven / MySQL / Node.js 是否已正确安装并满足版本要求。
+
+```cmd
+scripts\check-env.bat
+```
+
+检查项目：
+
+| 检查项 | 最低版本 | 说明 |
+|--------|----------|------|
+| JDK | 17 | 后端编译运行 |
+| Maven | 3.8 | 后端构建（也可使用 Maven Wrapper 代替） |
+| MySQL | 8.0 | 数据库 |
+| Node.js | 18 | 前端构建与开发 |
+
+输出示例：
+
+```
+[1/4] JDK 17+ ...
+  [OK] JDK 17.0.x
+      JAVA_HOME = C:\Program Files\Eclipse Adoptium\jdk-17.x.x
+
+[2/4] Maven 3.8+ ...
+  [OK] Maven 3.9.x
+
+[3/4] MySQL 8.0+ ...
+  [OK] mysql  Ver 8.0.xx for Win64
+
+[4/4] Node.js 18+ ...
+  [OK] Node.js v20.x.x
+      npm 10.x.x
+
+============================================================
+  All environment dependencies are ready!
+============================================================
+```
+
+---
+
+## 12. 常见问题排查
+
+### 12.1 端口被占用
+
+**现象**：启动后端或前端时报 `Port 8080/5173/5174/5175 is already in use`。
 
 **排查**：
 
@@ -390,9 +498,10 @@ taskkill /PID <PID> /F
 
 **解决方案**：
 - 终止占用端口的旧进程
+- 或运行 `scripts\stop-all.bat` 停止所有服务
 - 或修改端口：后端在 `application.yml` 中修改 `server.port`；前端在 `vite.config.js` 中修改 `server.port`
 
-### 9.2 中文乱码 / 编码问题
+### 12.2 中文乱码 / 编码问题
 
 **现象**：CMD 中输出中文乱码，或数据库导入后中文显示为 `???`。
 
@@ -408,7 +517,7 @@ taskkill /PID <PID> /F
 4. **VS Code**：项目 `settings.json` 已设置 `"files.encoding": "utf8"`
 5. **PowerShell 导入**：如 `Get-Content` 导入乱码，改用 CMD 方式或执行 `chcp 65001` 后再导入
 
-### 9.3 路径包含空格或中文
+### 12.3 路径包含空格或中文
 
 **现象**：Maven 或 npm 命令报路径相关错误。
 
@@ -417,7 +526,7 @@ taskkill /PID <PID> /F
 - 避免放在 `C:\Users\My Name\Documents\项目\` 这类路径下
 - 脚本中已使用 `%~dp0` 相对路径和引号包裹，但仍建议项目路径不含空格
 
-### 9.4 JAVA_HOME 未设置或不正确
+### 12.4 JAVA_HOME 未设置或不正确
 
 **现象**：VS Code 中 Java 扩展报错，或 Maven 编译失败。
 
@@ -427,7 +536,7 @@ taskkill /PID <PID> /F
 3. VS Code 中检查：`Ctrl+Shift+P` → `Java: Configure Java Runtime`，确认识别到 JDK 17+
 4. 项目 `.vscode/settings.json` 中已配置 `"spring-boot-tools.ls.java.home": "${env:JAVA_HOME}"`
 
-### 9.5 Maven 依赖下载失败 / 超时
+### 12.5 Maven 依赖下载失败 / 超时
 
 **现象**：`mvn spring-boot:run` 时报 `Could not transfer artifact` 或网络超时。
 
@@ -436,7 +545,7 @@ taskkill /PID <PID> /F
 2. 如已有失败的缓存，删除 `%USERPROFILE%\.m2\repository` 下对应目录后重试
 3. 检查网络代理设置，确保 Maven 能访问外网
 
-### 9.6 npm install 失败 / 缓慢
+### 12.6 npm install 失败 / 缓慢
 
 **现象**：`npm install` 超时或报网络错误。
 
@@ -444,9 +553,10 @@ taskkill /PID <PID> /F
 1. 配置国内镜像：`npm config set registry https://registry.npmmirror.com`
 2. 清除缓存重试：`npm cache clean --force`
 3. 删除 `node_modules` 和 `package-lock.json` 后重新安装
-4. 如使用 pnpm：`npm install -g pnpm && pnpm install`
+4. 运行 `scripts\fix-frontend-deps.bat` 一键重建前端依赖
+5. 如使用 pnpm：`npm install -g pnpm && pnpm install`
 
-### 9.7 MySQL 连接被拒绝
+### 12.7 MySQL 连接被拒绝
 
 **现象**：后端启动报 `Communications link failure` 或 `Access denied`。
 
@@ -457,7 +567,7 @@ taskkill /PID <PID> /F
 4. 确认数据库 `jd_ecommerce` 已创建：`mysql -u root -p -e "SHOW DATABASES;" | findstr jd_ecommerce`
 5. 如密码含特殊字符，在 YAML 中用引号包裹
 
-### 9.8 PowerShell 执行策略限制
+### 12.8 PowerShell 执行策略限制
 
 **现象**：运行 `.ps1` 脚本时报 `无法加载文件，因为在此系统上禁止运行脚本`。
 
@@ -471,7 +581,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 powershell -ExecutionPolicy Bypass -File scripts\setup-env.ps1
 ```
 
-### 9.9 VS Code Java 扩展不识别项目
+### 12.9 VS Code Java 扩展不识别项目
 
 **现象**：Java 文件显示红色波浪线，或无法跳转。
 
@@ -481,7 +591,7 @@ powershell -ExecutionPolicy Bypass -File scripts\setup-env.ps1
 3. 等待 Maven 导入完成（右下角进度条）
 4. 确认 JDK 版本 ≥ 17
 
-### 9.10 前端页面空白 / API 请求 404
+### 12.10 前端页面空白 / API 请求 404
 
 **现象**：前端页面打开但内容空白，或浏览器控制台报 API 404。
 

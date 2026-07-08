@@ -42,4 +42,7 @@ public interface RefundMapper {
 
     @Update("UPDATE refund SET status = #{status}, admin_id = #{adminId}, admin_handle_time = #{handleTime}, admin_remark = #{adminRemark}, completed_time = #{completedTime} WHERE id = #{id}")
     int updateAdminArbitrate(@Param("id") Long id, @Param("status") Integer status, @Param("adminId") Long adminId, @Param("handleTime") java.time.LocalDateTime handleTime, @Param("adminRemark") String adminRemark, @Param("completedTime") java.time.LocalDateTime completedTime);
+
+    @Select("SELECT COUNT(*) FROM refund WHERE merchant_id = #{merchantId} AND status = #{status}")
+    long countByMerchantAndStatus(@Param("merchantId") Long merchantId, @Param("status") Integer status);
 }
