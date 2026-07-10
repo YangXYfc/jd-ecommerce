@@ -23,7 +23,7 @@
       </el-form-item>
       <el-form-item label="商品图片">
         <div class="image-upload-area">
-          <div class="image-preview" :style="{ background: form.mainImage || 'linear-gradient(135deg, #eee, #ddd)' }"></div>
+          <div class="image-preview" :style="imageStyle(form.mainImage, Number(route.params.id) || 0)"></div>
           <el-button size="small">上传图片</el-button>
           <span style="margin-left: 8px; color: #999; font-size: 12px">建议尺寸 800×800px</span>
         </div>
@@ -50,6 +50,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getProductDetail, createProduct, updateProduct } from '@/api/merchant'
 import { ElMessage } from 'element-plus'
+import { imageStyle } from '@/utils/product-images'
 
 const route = useRoute()
 const router = useRouter()

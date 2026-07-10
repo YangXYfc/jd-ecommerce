@@ -1,3 +1,5 @@
+import { pickProductImage } from '@/utils/product-images'
+
 /** 商家后台 Mock 数据 */
 
 export const mockMerchantInfo = {
@@ -48,7 +50,7 @@ export const mockMerchantProducts = Array.from({ length: 15 }, (_, i) => ({
   stock: [120, 80, 200, 150, 60, 300, 500, 400, 600, 250, 40, 35, 800, 700, 30][i],
   sales: [156, 45, 89, 67, 23, 120, 200, 150, 120, 80, 12, 34, 300, 250, 15][i],
   status: i < 12 ? 'on_sale' : i === 12 ? 'off_shelf' : i === 13 ? 'draft' : 'under_review',
-  mainImage: `linear-gradient(135deg, hsl(${i * 24}, 70%, 60%), hsl(${i * 24 + 30}, 70%, 50%))`,
+  mainImage: pickProductImage(i),
   createdAt: `2024-0${(i % 9) + 1}-10 10:00:00`,
   skus: [
     { id: i * 10 + 1, name: '标准版', price: [4999, 5999, 899, 1299, 2199, 399, 159, 199, 299, 499, 1599, 1899, 299, 399, 2599][i], stock: 100 },
@@ -94,7 +96,7 @@ export const mockMerchantReviews = Array.from({ length: 10 }, (_, i) => ({
   userName: `买家${i + 1}`,
   rating: [5, 4, 5, 3, 5, 4, 2, 5, 4, 5][i],
   content: ['质量很好，物流也快！', '包装精致，产品不错', '性价比超高，推荐！', '一般般吧', '正品保障，放心购买', '用了几天，体验不错', '有点小瑕疵', '非常满意！', '还行', '第二次购买了，一如既往好'][i],
-  images: i % 3 === 0 ? ['img1.jpg', 'img2.jpg'] : [],
+  images: i % 3 === 0 ? [pickProductImage(i), pickProductImage(i + 1)] : [],
   createdAt: `2024-07-0${(i % 7) + 1} 15:00:00`,
   reply: i < 4 ? '感谢您的支持！' : ''
 }))

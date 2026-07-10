@@ -41,7 +41,7 @@
       <div class="info-card">
         <h3>📦 商品信息</h3>
         <div v-for="item in order.items" :key="item.id" class="product-row">
-          <div class="product-image" :style="{ background: item.image }"></div>
+          <ProductImage class="product-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
           <div class="product-info">
             <p class="product-name text-ellipsis-2" @click="$router.push(`/product/${item.productId}`)">{{ item.productName }}</p>
             <span class="product-sku">{{ item.skuName }}</span>
@@ -77,6 +77,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getOrderDetail, payOrder, cancelOrder, confirmReceive } from '@/api/order'
 import { orderStatusMap } from '@/utils/mock-data'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import ProductImage from '@/components/ProductImage.vue'
 
 const route = useRoute()
 const router = useRouter()

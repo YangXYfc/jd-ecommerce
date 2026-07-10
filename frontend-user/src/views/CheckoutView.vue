@@ -30,7 +30,7 @@
         <h2 class="section-title">📦 商品清单</h2>
         <div class="order-items">
           <div v-for="item in orderItems" :key="item.id" class="order-item">
-            <div class="item-image" :style="{ background: item.image }"></div>
+            <ProductImage class="item-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
             <div class="item-info">
               <p class="item-name text-ellipsis-2">{{ item.productName }}</p>
               <span class="item-sku">{{ item.skuName }}</span>
@@ -100,6 +100,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
 import { getAddressList, createOrder, payOrder } from '@/api/order'
 import { getProductDetail } from '@/api/product'
+import ProductImage from '@/components/ProductImage.vue'
 import { mockAddresses } from '@/utils/mock-data'
 import { ElMessage } from 'element-plus'
 

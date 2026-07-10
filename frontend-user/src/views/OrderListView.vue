@@ -25,7 +25,7 @@
           </div>
           <div class="order-body">
             <div v-for="item in order.items" :key="item.id" class="order-product">
-              <div class="product-image" :style="{ background: item.image }"></div>
+              <ProductImage class="product-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
               <div class="product-info">
                 <p class="product-name text-ellipsis-2">{{ item.productName }}</p>
                 <span class="product-sku">{{ item.skuName }}</span>
@@ -63,6 +63,7 @@ import { useRouter } from 'vue-router'
 import { getOrderList, payOrder, cancelOrder, confirmReceive } from '@/api/order'
 import { orderStatusMap } from '@/utils/mock-data'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import ProductImage from '@/components/ProductImage.vue'
 
 const router = useRouter()
 const activeTab = ref('all')

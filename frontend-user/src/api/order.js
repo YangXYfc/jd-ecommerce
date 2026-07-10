@@ -3,11 +3,26 @@
  */
 import request from '@/utils/request'
 import { mockOrders, mockAddresses } from '@/utils/mock-data'
+import { normalizeImageSource } from '@/utils/product-images'
+
+function normalizeOrder(order) {
+  if (!order) return order
+  return {
+    ...order,
+    items: (order.items || []).map((item, index) => ({
+      ...item,
+      image: normalizeImageSource(item.image || item.productImage || item.product_image || item.mainImage, item.productId || index)
+    }))
+  }
+}
 
 // 获取订单列表
 export function getOrderList(params = {}) {
   const { status, page = 1, size = 10 } = params
-  return request.get('/orders', { params }).catch(() => {
+  return request.get('/orders', { params }).then(res => ({
+    ...res,
+    items: (res.items || res.list || res.records || []).map(normalizeOrder)
+  })).catch(() => {
     let list = [...mockOrders]
     if (status && status !== 'all') {
       list = list.filter(o => o.status === status)
@@ -15,16 +30,16 @@ export function getOrderList(params = {}) {
     list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     const total = list.length
     const start = (page - 1) * size
-    return { items: list.slice(start, start + size), total, page, size }
+    return { items: list.slice(start, start + size).map(normalizeOrder), total, page, size }
   })
 }
 
 // 获取订单详情
 export function getOrderDetail(id) {
-  return request.get(`/orders/${id}`).catch(() => {
+  return request.get(`/orders/${id}`).then(normalizeOrder).catch(() => {
     const order = mockOrders.find(o => o.id === Number(id))
     if (!order) return Promise.reject(new Error('订单不存在'))
-    return order
+    return normalizeOrder(order)
   })
 }
 

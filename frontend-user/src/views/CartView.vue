@@ -27,7 +27,7 @@
               <input type="checkbox" :checked="item.selected" @change="cartStore.toggleSelect(item.id)" />
             </div>
             <div class="col-info">
-              <div class="item-image" :style="{ background: item.image }"></div>
+              <ProductImage class="item-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
               <div class="item-detail">
                 <p class="item-name text-ellipsis-2" @click="$router.push(`/product/${item.productId}`)">{{ item.productName }}</p>
                 <span class="item-sku">{{ item.skuName }}</span>
@@ -81,6 +81,7 @@
 import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
+import ProductImage from '@/components/ProductImage.vue'
 
 const cartStore = useCartStore()
 const router = useRouter()

@@ -27,7 +27,7 @@
         </div>
         <div class="review-content">{{ review.content }}</div>
         <div v-if="review.images && review.images.length" class="review-images">
-          <div v-for="(img, i) in review.images" :key="i" class="review-img">{{ img }}</div>
+          <div v-for="(img, i) in review.images" :key="i" class="review-img" :style="imageStyle(img, i)"></div>
         </div>
         <div class="review-footer">
           <div v-if="review.reply" class="reply-box">
@@ -73,6 +73,7 @@
 import { ref } from 'vue'
 import { getReviewList, replyReview } from '@/api/merchant'
 import { ElMessage } from 'element-plus'
+import { imageStyle } from '@/utils/product-images'
 
 const loading = ref(false)
 const reviews = ref([])

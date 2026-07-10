@@ -59,7 +59,7 @@
       <div class="info-card">
         <h3>📦 退款商品</h3>
         <div v-for="item in refund.items" :key="item.id" class="product-row">
-          <div class="product-image" :style="{ background: item.image }"></div>
+          <ProductImage class="product-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
           <div class="product-info">
             <p class="product-name text-ellipsis-2">{{ item.productName }}</p>
             <span class="product-sku">{{ item.skuName }}</span>
@@ -106,6 +106,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getRefundDetail, submitReturnLogistics, submitAppeal } from '@/api/refund'
 import { refundStatusMap } from '@/utils/mock-data'
 import { ElMessage } from 'element-plus'
+import ProductImage from '@/components/ProductImage.vue'
 
 const route = useRoute()
 const router = useRouter()

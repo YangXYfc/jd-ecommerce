@@ -11,6 +11,11 @@
 
     <el-table :data="filteredProducts" stripe style="width: 100%; margin-top: 16px">
       <el-table-column prop="id" label="ID" width="60" />
+      <el-table-column label="鍟嗗搧鍥剧墖" width="90">
+        <template #default="{ row }">
+          <div class="product-thumb" :style="imageStyle(row.image, row.id || 0)"></div>
+        </template>
+      </el-table-column>
       <el-table-column prop="name" label="商品名称" width="200" />
       <el-table-column prop="merchantName" label="所属商家" width="180" />
       <el-table-column prop="price" label="价格" width="100">
@@ -38,6 +43,9 @@
     <el-dialog v-model="detailVisible" title="商品详情" width="500px">
       <el-descriptions :column="1" border v-if="currentProduct">
         <el-descriptions-item label="ID">{{ currentProduct.id }}</el-descriptions-item>
+        <el-descriptions-item label="鍟嗗搧鍥剧墖">
+          <div class="detail-thumb" :style="imageStyle(currentProduct.image, currentProduct.id || 0)"></div>
+        </el-descriptions-item>
         <el-descriptions-item label="商品名称">{{ currentProduct.name }}</el-descriptions-item>
         <el-descriptions-item label="所属商家">{{ currentProduct.merchantName }}</el-descriptions-item>
         <el-descriptions-item label="价格">¥{{ currentProduct.price }}</el-descriptions-item>
@@ -57,6 +65,7 @@
 import { ref, computed } from 'vue'
 import { mockProductsAudit } from '@/utils/mock-data'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import { imageStyle } from '@/utils/product-images'
 
 const products = ref([...mockProductsAudit])
 const filterStatus = ref('')
@@ -85,4 +94,6 @@ async function handleAudit(row, result) {
 
 <style scoped>
 .toolbar { display: flex; align-items: center; }
+.product-thumb { width: 44px; height: 44px; border-radius: 4px; flex-shrink: 0; }
+.detail-thumb { width: 120px; height: 120px; border-radius: 6px; }
 </style>

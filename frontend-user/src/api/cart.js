@@ -3,10 +3,18 @@
  */
 import request from '@/utils/request'
 import { mockProducts } from '@/utils/mock-data'
+import { normalizeImageSource } from '@/utils/product-images'
+
+function normalizeCartItem(item, index = 0) {
+  return {
+    ...item,
+    image: normalizeImageSource(item.image || item.productImage || item.product_image || item.mainImage, item.productId || index)
+  }
+}
 
 // 获取购物车列表
 export function getCartList() {
-  return request.get('/cart').catch(() => {
+  return request.get('/cart').then(items => (items || []).map(normalizeCartItem)).catch(() => {
     // mock: 随机选几个商品作为购物车内容
     const items = []
     for (let i = 0; i < 4; i++) {
@@ -26,7 +34,7 @@ export function getCartList() {
         merchantName: product.merchantName
       })
     }
-    return items
+    return items.map(normalizeCartItem)
   })
 }
 

@@ -59,15 +59,15 @@ INSERT INTO `category` (`id`, `name`, `parent_id`, `sort`, `icon`, `status`) VAL
 -- 4. 商品数据
 -- ============================================================
 INSERT INTO `product` (`id`, `merchant_id`, `category_id`, `name`, `subtitle`, `main_image`, `sub_images`, `description`, `detail_html`, `price`, `status`, `sales_count`) VALUES
-(1, 1, 111, '智选 Pro 5G 手机 12GB+256GB 钛空灰', '旗舰芯片 | 徕卡光学 | 120W快充', 'https://img.jd-demo.com/product/p1_main.jpg', '["https://img.jd-demo.com/product/p1_1.jpg","https://img.jd-demo.com/product/p1_2.jpg","https://img.jd-demo.com/product/p1_3.jpg"]', '搭载最新旗舰处理器，6.7英寸OLED屏幕，5000mAh大电池，支持120W有线快充和50W无线快充。徕卡四摄系统，拍照体验出众。', '<p>产品详情...</p>', 4999.00, 1, 1520),
-(2, 1, 111, '畅享 Note 5G 手机 8GB+128GB 幻夜黑', '大屏长续航 | 5000mAh', 'https://img.jd-demo.com/product/p2_main.jpg', '["https://img.jd-demo.com/product/p2_1.jpg","https://img.jd-demo.com/product/p2_2.jpg"]', '6.8英寸大屏，5000mAh超大电池，支持33W快充，后置6400万像素三摄。', '<p>产品详情...</p>', 1599.00, 1, 3200),
-(3, 1, 121, '轻薄本 Air 14 锐龙版 16GB+512GB', '14英寸2.8K屏 | 锐龙7 7840H', 'https://img.jd-demo.com/product/p3_main.jpg', '["https://img.jd-demo.com/product/p3_1.jpg","https://img.jd-demo.com/product/p3_2.jpg"]', '14英寸2.8K OLED屏幕，AMD锐龙7 7840H处理器，16GB LPDDR5内存，512GB NVMe SSD，1.2kg轻薄机身。', '<p>产品详情...</p>', 4299.00, 1, 860),
-(4, 1, 13,  '65W GaN氮化镓充电器 三口快充', '小巧便携 | 兼容多设备', 'https://img.jd-demo.com/product/p4_main.jpg', '["https://img.jd-demo.com/product/p4_1.jpg"]', '65W GaN氮化镓快充，支持PD/PPS/QC等多种协议，双USB-C+USB-A三口设计，折叠插脚便携出行。', '<p>产品详情...</p>', 129.00, 1, 5800),
-(5, 2, 311, '纯棉短袖T恤 男款 100%新疆棉', '透气舒适 | 多色可选', 'https://img.jd-demo.com/product/p5_main.jpg', '["https://img.jd-demo.com/product/p5_1.jpg","https://img.jd-demo.com/product/p5_2.jpg","https://img.jd-demo.com/product/p5_3.jpg"]', '100%新疆长绒棉，260g重磅面料，精梳工艺，领口加固不易变形。', '<p>产品详情...</p>', 59.00, 1, 8900),
-(6, 2, 321, '法式碎花连衣裙 夏季新款', '显瘦版型 | 优雅气质', 'https://img.jd-demo.com/product/p6_main.jpg', '["https://img.jd-demo.com/product/p6_1.jpg","https://img.jd-demo.com/product/p6_2.jpg"]', '法式方领设计，高腰A字版型显瘦，雪纺面料飘逸舒适，适合日常和约会穿着。', '<p>产品详情...</p>', 159.00, 1, 2300),
-(7, 1, 21,  '4K激光投影电视 100英寸', '影院级巨幕 | 护眼无屏闪', 'https://img.jd-demo.com/product/p7_main.jpg', '["https://img.jd-demo.com/product/p7_1.jpg"]', '4K分辨率激光投影，100英寸超大画面，3500ANSI流明，MEMC运动补偿，哈曼卡顿音响。', '<p>产品详情...</p>', 8999.00, 1, 120),
-(8, 2, 312, '春秋夹克外套 男款防风', '休闲百搭 | 轻薄防风', 'https://img.jd-demo.com/product/p8_main.jpg', '["https://img.jd-demo.com/product/p8_1.jpg","https://img.jd-demo.com/product/p8_2.jpg"]', '防风面料，可拆卸帽子，多口袋设计实用，春秋过渡季节首选。', '<p>产品详情...</p>', 199.00, 0, 0),
-(9, 1, 111, '折叠屏手机 Flip 5G 12GB+512GB', '内外双屏 | 悬停自拍', 'https://img.jd-demo.com/product/p9_main.jpg', '["https://img.jd-demo.com/product/p9_1.jpg"]', '8.2英寸内屏+3.5英寸外屏，骁龙8 Gen3，悬停自拍，5000万主摄。', '<p>产品详情...</p>', 7999.00, 3, 0);
+(1, 1, 111, '智选 Pro 5G 手机 12GB+256GB 钛空灰', '旗舰芯片 | 徕卡光学 | 120W快充', 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=900&q=80"]', '搭载最新旗舰处理器，6.7英寸OLED屏幕，5000mAh大电池，支持120W有线快充和50W无线快充。徕卡四摄系统，拍照体验出众。', '<p>产品详情...</p>', 4999.00, 1, 1520),
+(2, 1, 111, '畅享 Note 5G 手机 8GB+128GB 幻夜黑', '大屏长续航 | 5000mAh', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=900&q=80"]', '6.8英寸大屏，5000mAh超大电池，支持33W快充，后置6400万像素三摄。', '<p>产品详情...</p>', 1599.00, 1, 3200),
+(3, 1, 121, '轻薄本 Air 14 锐龙版 16GB+512GB', '14英寸2.8K屏 | 锐龙7 7840H', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=900&q=80"]', '14英寸2.8K OLED屏幕，AMD锐龙7 7840H处理器，16GB LPDDR5内存，512GB NVMe SSD，1.2kg轻薄机身。', '<p>产品详情...</p>', 4299.00, 1, 860),
+(4, 1, 13,  '65W GaN氮化镓充电器 三口快充', '小巧便携 | 兼容多设备', 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=80"]', '65W GaN氮化镓快充，支持PD/PPS/QC等多种协议，双USB-C+USB-A三口设计，折叠插脚便携出行。', '<p>产品详情...</p>', 129.00, 1, 5800),
+(5, 2, 311, '纯棉短袖T恤 男款 100%新疆棉', '透气舒适 | 多色可选', 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=900&q=80"]', '100%新疆长绒棉，260g重磅面料，精梳工艺，领口加固不易变形。', '<p>产品详情...</p>', 59.00, 1, 8900),
+(6, 2, 321, '法式碎花连衣裙 夏季新款', '显瘦版型 | 优雅气质', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=80"]', '法式方领设计，高腰A字版型显瘦，雪纺面料飘逸舒适，适合日常和约会穿着。', '<p>产品详情...</p>', 159.00, 1, 2300),
+(7, 1, 21,  '4K激光投影电视 100英寸', '影院级巨幕 | 护眼无屏闪', 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=900&q=80"]', '4K分辨率激光投影，100英寸超大画面，3500ANSI流明，MEMC运动补偿，哈曼卡顿音响。', '<p>产品详情...</p>', 8999.00, 1, 120),
+(8, 2, 312, '春秋夹克外套 男款防风', '休闲百搭 | 轻薄防风', 'https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=80","https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=80"]', '防风面料，可拆卸帽子，多口袋设计实用，春秋过渡季节首选。', '<p>产品详情...</p>', 199.00, 0, 0),
+(9, 1, 111, '折叠屏手机 Flip 5G 12GB+512GB', '内外双屏 | 悬停自拍', 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=900&q=80', '["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80"]', '8.2英寸内屏+3.5英寸外屏，骁龙8 Gen3，悬停自拍，5000万主摄。', '<p>产品详情...</p>', 7999.00, 3, 0);
 
 -- ============================================================
 -- 5. 商品SKU数据
@@ -145,12 +145,12 @@ INSERT INTO `orders` (`id`, `order_no`, `user_id`, `merchant_id`, `total_amount`
 -- 9. 订单明细数据
 -- ============================================================
 INSERT INTO `order_item` (`id`, `order_id`, `product_sku_id`, `product_name`, `sku_name`, `product_image`, `quantity`, `unit_price`, `subtotal`) VALUES
-(1,  1, 1,  '智选 Pro 5G 手机 12GB+256GB 钛空灰', '智选Pro 5G 钛空灰 12GB+256GB', 'https://img.jd-demo.com/product/p1_main.jpg', 1, 4999.00, 4999.00),
-(2,  2, 10, '65W GaN氮化镓充电器 三口快充',      '65W GaN充电器 白色',           'https://img.jd-demo.com/product/p4_main.jpg', 1, 129.00,  129.00),
-(3,  3, 16, '法式碎花连衣裙 夏季新款',            '碎花连衣裙 M',                 'https://img.jd-demo.com/product/p6_main.jpg', 1, 159.00,  159.00),
-(4,  4, 5,  '畅享 Note 5G 手机 8GB+128GB 幻夜黑', '畅享Note 5G 幻夜黑 8GB+128GB', 'https://img.jd-demo.com/product/p2_main.jpg', 1, 1599.00, 1599.00),
-(5,  5, 11, '纯棉短袖T恤 男款 100%新疆棉',        'T恤 白色 L',                   'https://img.jd-demo.com/product/p5_main.jpg', 1, 59.00,   59.00),
-(6,  6, 8,  '轻薄本 Air 14 锐龙版 16GB+512GB',   'Air14 锐龙版 16GB+512GB 银色', 'https://img.jd-demo.com/product/p3_main.jpg', 1, 4299.00, 4299.00);
+(1,  1, 1,  '智选 Pro 5G 手机 12GB+256GB 钛空灰', '智选Pro 5G 钛空灰 12GB+256GB', 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80', 1, 4999.00, 4999.00),
+(2,  2, 10, '65W GaN氮化镓充电器 三口快充',      '65W GaN充电器 白色',           'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=900&q=80', 1, 129.00,  129.00),
+(3,  3, 16, '法式碎花连衣裙 夏季新款',            '碎花连衣裙 M',                 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=80', 1, 159.00,  159.00),
+(4,  4, 5,  '畅享 Note 5G 手机 8GB+128GB 幻夜黑', '畅享Note 5G 幻夜黑 8GB+128GB', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80', 1, 1599.00, 1599.00),
+(5,  5, 11, '纯棉短袖T恤 男款 100%新疆棉',        'T恤 白色 L',                   'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80', 1, 59.00,   59.00),
+(6,  6, 8,  '轻薄本 Air 14 锐龙版 16GB+512GB',   'Air14 锐龙版 16GB+512GB 银色', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80', 1, 4299.00, 4299.00);
 
 -- ============================================================
 -- 10. 退款数据
@@ -195,10 +195,10 @@ INSERT INTO `payment` (`id`, `payment_no`, `order_id`, `user_id`, `amount`, `pay
 -- 14. 轮播图数据
 -- ============================================================
 INSERT INTO `banner` (`id`, `title`, `image_url`, `link_url`, `sort`, `status`) VALUES
-(1, '618大促 全场低至5折',    'https://img.jd-demo.com/banner/b1.jpg', '/promotion/618',  1, 1),
-(2, '手机数码 新品首发',      'https://img.jd-demo.com/banner/b2.jpg', '/category/111',   2, 1),
-(3, '服饰换新 夏日清凉',      'https://img.jd-demo.com/banner/b3.jpg', '/category/3',     3, 1),
-(4, '家电焕新 以旧换新',      'https://img.jd-demo.com/banner/b4.jpg', '/category/2',     4, 1);
+(1, '618大促 全场低至5折',    'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1600&q=80', '/promotion/618',  1, 1),
+(2, '手机数码 新品首发',      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80', '/category/111',   2, 1),
+(3, '服饰换新 夏日清凉',      'https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&w=1600&q=80', '/category/3',     3, 1),
+(4, '家电焕新 以旧换新',      'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1600&q=80', '/category/2',     4, 1);
 
 -- ============================================================
 -- 15. 店铺设置数据

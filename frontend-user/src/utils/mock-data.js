@@ -1,3 +1,5 @@
+import { bannerImageUrls, pickProductImage } from '@/utils/product-images'
+
 /**
  * Mock 数据 - 模拟后端 API 响应
  * 在后端未就绪时提供完整的前端开发数据
@@ -61,14 +63,26 @@ export const mockCategories = [
 
 // 商品图片占位（使用渐变色）
 const productColors = [
-  'linear-gradient(135deg, #667eea, #764ba2)',
-  'linear-gradient(135deg, #f093fb, #f5576c)',
-  'linear-gradient(135deg, #4facfe, #00f2fe)',
-  'linear-gradient(135deg, #43e97b, #38f9d7)',
-  'linear-gradient(135deg, #fa709a, #fee140)',
-  'linear-gradient(135deg, #a8edea, #fed6e3)',
-  'linear-gradient(135deg, #ff9a9e, #fecfef)',
-  'linear-gradient(135deg, #ffecd2, #fcb69f)'
+  pickProductImage(0),
+  pickProductImage(1),
+  pickProductImage(2),
+  pickProductImage(3),
+  pickProductImage(4),
+  pickProductImage(5),
+  pickProductImage(6),
+  pickProductImage(7),
+  pickProductImage(8),
+  pickProductImage(9),
+  pickProductImage(10),
+  pickProductImage(11),
+  pickProductImage(12),
+  pickProductImage(13),
+  pickProductImage(14),
+  pickProductImage(15),
+  pickProductImage(16),
+  pickProductImage(17),
+  pickProductImage(18),
+  pickProductImage(19)
 ]
 
 // 生成 mock 商品列表
@@ -320,10 +334,10 @@ export const mockRefunds = generateRefunds()
 
 // 轮播图
 export const mockBanners = [
-  { id: 1, title: '年终大促', subtitle: '全场低至5折', image: 'linear-gradient(135deg, #e1251b, #f5af19)', link: '/product-list' },
-  { id: 2, title: '新品首发', subtitle: '科技引领未来', image: 'linear-gradient(135deg, #2193b0, #6dd5ed)', link: '/product-list' },
-  { id: 3, title: '品质生活', subtitle: '精选好物推荐', image: 'linear-gradient(135deg, #834d9b, #d04ed6)', link: '/product-list' },
-  { id: 4, title: '会员专享', subtitle: '专属优惠等你来', image: 'linear-gradient(135deg, #393E46, #00ADB9)', link: '/product-list' }
+  { id: 1, title: '年终大促', subtitle: '全场低至5折', image: bannerImageUrls[0], link: '/product-list' },
+  { id: 2, title: '新品首发', subtitle: '科技引领未来', image: bannerImageUrls[1], link: '/product-list' },
+  { id: 3, title: '品质生活', subtitle: '精选好物推荐', image: bannerImageUrls[2], link: '/product-list' },
+  { id: 4, title: '会员专享', subtitle: '专属优惠等你来', image: bannerImageUrls[3], link: '/product-list' }
 ]
 
 // 导出辅助函数

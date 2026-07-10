@@ -1,10 +1,10 @@
 <template>
   <div class="product-card" @click="goDetail">
-    <div class="product-image" :style="{ background: product.image }">
+    <ProductImage class="product-image" :src="product.image || product.mainImage" :alt="product.name" :fallback-index="product.id || 0">
       <span v-if="product.tags" class="product-tags">
         <span v-for="tag in product.tags" :key="tag" class="tag">{{ tag }}</span>
       </span>
-    </div>
+    </ProductImage>
     <div class="product-info">
       <p class="product-name text-ellipsis-2">{{ product.name }}</p>
       <div class="product-meta">
@@ -25,6 +25,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import ProductImage from '@/components/ProductImage.vue'
 const props = defineProps({ product: { type: Object, required: true } })
 const router = useRouter()
 function goDetail() {

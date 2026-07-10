@@ -12,14 +12,16 @@
       <div class="detail-main">
         <!-- 图片区 -->
         <div class="image-section">
-          <div class="main-image" :style="{ background: currentImage }"></div>
+          <ProductImage class="main-image" :src="currentImage" :alt="product.name" :fallback-index="product.id || 0" />
           <div class="image-thumbs">
-            <div
+            <ProductImage
               v-for="(img, idx) in product.images" :key="idx"
               :class="['thumb', { active: currentImage === img }]"
-              :style="{ background: img }"
+              :src="img"
+              :alt="product.name"
+              :fallback-index="idx"
               @click="currentImage = img"
-            ></div>
+            />
           </div>
         </div>
 
@@ -125,6 +127,7 @@ import { getProductDetail } from '@/api/product'
 import { useCartStore } from '@/stores/cart'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
+import ProductImage from '@/components/ProductImage.vue'
 
 const route = useRoute()
 const router = useRouter()

@@ -21,7 +21,7 @@
       <el-table-column label="商品" width="240">
         <template #default="{ row }">
           <div class="product-cell">
-            <div class="product-thumb" :style="{ background: row.mainImage }"></div>
+            <div class="product-thumb" :style="imageStyle(row.mainImage || row.image, row.id || 0)"></div>
             <span class="product-name text-ellipsis">{{ row.name }}</span>
           </div>
         </template>
@@ -108,6 +108,7 @@
 import { ref } from 'vue'
 import { getProductList, updateProductStatus, deleteProduct, getProductSkus, createSku, updateSku, deleteSku as deleteSkuApi } from '@/api/merchant'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import { imageStyle } from '@/utils/product-images'
 
 const loading = ref(false)
 const products = ref([])

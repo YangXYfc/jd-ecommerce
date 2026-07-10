@@ -1,3 +1,5 @@
+import { pickProductImage } from '@/utils/product-images'
+
 /** 管理员后台 Mock 数据 */
 
 export const mockDashboard = {
@@ -54,6 +56,7 @@ export const mockMerchants = Array.from({length: 10}, (_, i) => ({
 
 export const mockProductsAudit = Array.from({length: 15}, (_, i) => ({
   id: i + 1,
+  image: pickProductImage(i),
   name: ['智能旗舰手机','轻薄笔记本','无线耳机','智能手表','4K电视','变频空调','破壁机','扫地机器人','纯棉T恤','运动鞋','保湿面霜','坚果礼包','积木玩具','瑜伽垫','畅销小说'][i],
   merchantName: mockMerchants[i % 10].shopName,
   categoryId: (i % 10) + 1,

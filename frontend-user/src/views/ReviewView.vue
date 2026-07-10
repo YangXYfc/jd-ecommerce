@@ -10,7 +10,7 @@
 
       <!-- 商品列表 -->
       <div v-for="item in orderItems" :key="item.id" class="review-item">
-        <div class="product-image" :style="{ background: item.image }"></div>
+        <ProductImage class="product-image" :src="item.image" :alt="item.productName" :fallback-index="item.productId || 0" />
         <div class="product-info">
           <p class="product-name text-ellipsis-2">{{ item.productName }}</p>
           <span class="product-sku">{{ item.skuName }}</span>
@@ -45,6 +45,7 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getOrderDetail, submitReview } from '@/api/order'
 import { ElMessage } from 'element-plus'
+import ProductImage from '@/components/ProductImage.vue'
 
 const route = useRoute()
 const router = useRouter()
