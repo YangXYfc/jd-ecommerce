@@ -390,6 +390,22 @@ mvn test
 | 前端开发 | 前端工程师 | 用户端/管理后台/商家后台 Vue3 开发 |
 | 测试运维 | 测试运维-菜菜 | 测试用例、测试执行、回归验证、部署文档 |
 
-## License
 
-MIT
+
+## 运行界面
+
+![alt text](image.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-9.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
