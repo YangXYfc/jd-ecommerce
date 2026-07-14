@@ -1,4 +1,4 @@
-# 极东商城 - 商家后台 (frontend-merchant)
+# B2C 商城 - 商家后台 (frontend-merchant)
 
 独立商家后台前端项目，基于 Vue 3 + Vite + Element Plus + Pinia + Axios。
 
